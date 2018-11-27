@@ -1,0 +1,7 @@
+// 检测 ts代码规范
+{
+    "extends": "tslint-config-standard",
+    "globals": {
+        "require": true
+    }
+}
