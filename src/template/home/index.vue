@@ -48,9 +48,9 @@
     export default class Home extends Vue {
 
         // props
-        @Prop(Number) index!: number; // 对比 index: { type: Number };
-        @Prop({ type: String, default: "ts Props" }) pro!: string; // 对比 pro: { type: String, default: "ts Props" }
-        @Prop([String, Number]) str ? : string | number; // 对比 str: { type: [String,Number] }
+        @Prop(Number) index!: number; // 对比： index: { type: Number };
+        @Prop({ type: String, default: "ts Props" }) pro!: string; // 对比： pro: { type: String, default: "ts Props" }
+        @Prop([String, Number]) str ? : string | number; // 对比： str: { type: [String,Number] }
 
         // data
         private readonly num: number = 100;
@@ -62,7 +62,7 @@
         onCountChange(newVal: number, oldVal: number) {
             console.log("count_new:", newVal);
             console.log("count_old:", oldVal);
-            //   对比
+            //   对比：
             //   watch:{
             //       count:{
             //           handle:'onCountChange',
@@ -75,7 +75,7 @@
         @Emit('reset')
         resetCount() {
             this.count = 1
-            // 对比
+            // 对比：
             // resetCount() {
             //   this.count = 1
             //   this.$emit('reset')
@@ -85,7 +85,7 @@
         @Emit()
         addToCount(n: number) {
             this.count += n
-            // 对比
+            // 对比：
             // addToCount(n) {
             //     this.count += n
             //     this.$emit('add-to-count', n)
@@ -114,6 +114,26 @@
             console.log("countMethod:", url);
             this.countCopyMethod(Math.random());
             return url;
+        }
+
+        // set get 存取器，相当于computed
+        // 对比：
+        // computed: {
+        //     copyCount: {
+        //         get() {
+        //              return this.count++
+        //         },
+        //         set(num) {
+        //              this.count = num
+        //         }
+        //     }
+        // }
+        set copyCount(num: number) {
+            this.count = num
+        }
+
+        get copyCount(): number {
+            return this.count++
         }
     }
 </script>
