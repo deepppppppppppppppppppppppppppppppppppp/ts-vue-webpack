@@ -8,6 +8,17 @@
 </template>
 <script lang="ts">
     /**
+     * * 注：
+     * ! 移除 null和 undefined类型
+     * ? 可选参数
+     * 默认 public
+     * 不能合并
+     * 类与类不能合并
+     * 接口与类不能合并
+     * 变量与类不能合并
+     */
+
+    /**
      * @Emit
      * @Inject
      * @Model
@@ -30,9 +41,6 @@
     /**
      * Mixin Home
      *
-     * ! 移除 null和 undefined类型
-     * ? 可选参数
-     * 默认 public
      * @export
      * @class Home
      * @extends {Vue}
