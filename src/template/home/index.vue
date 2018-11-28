@@ -53,8 +53,8 @@
         @Prop([String, Number]) str ? : string | number; // 对比： str: { type: [String,Number] }
 
         // data
-        private readonly num: number = 100;
-        public count: number = 1;
+        private readonly num: number = 100; // 只读
+        public count: number = 1; // 默认
         private msg: string = "Welcome to Your Vue.js App";
 
         // watch
