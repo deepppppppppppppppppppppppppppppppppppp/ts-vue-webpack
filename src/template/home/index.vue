@@ -1,9 +1,15 @@
 <template>
     <div class="firt_ts">
-        <hello-world></hello-world>
-        <p>{{num - count}}</p>
-        <p>{{`${count} : ${msg}`}}</p>
-        <button @click="countMethod('www.baidu.com')">www.baidu.com</button>
+        <div v-show="false">
+            <hello-world></hello-world>
+            <p>{{num - count}}</p>
+            <p>{{`${count} : ${msg}`}}</p>
+            <button @click="countMethod('www.baidu.com')">www.baidu.com</button>
+        </div>
+        <div>
+            <span>test</span>
+
+        </div>
     </div>
 </template>
 <script lang="ts">
@@ -28,9 +34,9 @@
      * @Component (from vue-class-component)
      * Mixins (the helper function named mixins defined at vue-class-component)
      */
-    import { Component, Vue, Prop, Watch, Emit } from "vue-property-decorator";
-    import HelloWorld from "../../components/HelloWorld.vue";
-    import { watch } from "fs";
+    import { Component, Vue, Prop, Watch, Emit } from 'vue-property-decorator'
+    import HelloWorld from '../../components/HelloWorld.vue'
+    import { watch } from 'fs'
     // 每段注释后是对比写法
     // @Component 修饰符注明了此类为一个 Vue 组件
     @Component({
@@ -46,22 +52,21 @@
      * @extends {Vue}
      */
     export default class Home extends Vue {
-
         // props
-        @Prop(Number) index!: number; // 对比： index: { type: Number };
-        @Prop({ type: String, default: "ts Props" }) pro!: string; // 对比： pro: { type: String, default: "ts Props" }
-        @Prop([String, Number]) str ? : string | number; // 对比： str: { type: [String,Number] }
+        @Prop(Number) index!: number // 对比： index: { type: Number };
+        @Prop({ type: String, default: 'ts Props' }) pro!: string // 对比： pro: { type: String, default: "ts Props" }
+        @Prop([String, Number]) str?: string | number // 对比： str: { type: [String,Number] }
 
         // data
-        private readonly num: number = 100; // 只读
-        public count: number = 1; // 默认
-        private msg: string = "Welcome to Your Vue.js App";
+        private readonly num: number = 100 // 只读
+        public count: number = 1 // 默认
+        private msg: string = 'Welcome to Your Vue.js App'
 
         // watch
-        @Watch("count", { immediate: true, deep: true })
+        @Watch('count', { immediate: true, deep: true })
         onCountChange(newVal: number, oldVal: number) {
-            console.log("count_new:", newVal);
-            console.log("count_old:", oldVal);
+            console.log('count_new:', newVal)
+            console.log('count_old:', oldVal)
             //   对比：
             //   watch:{
             //       count:{
@@ -94,26 +99,26 @@
 
         // created
         private created(): void {
-            console.log("ts in created");
+            console.log('ts in created')
         }
 
         // mounted
         private mounted(): void {
-            console.log("ts in mounted");
+            console.log('ts in mounted')
             setTimeout(_ => {
-                this.count++;
-            }, 5000);
+                this.count++
+            }, 5000)
         }
 
         // methods
         private countCopyMethod(countMethodNum: number): void {
-            console.log("countCopyMethod:", countMethodNum);
+            console.log('countCopyMethod:', countMethodNum)
         }
 
         private countMethod(url: string): string {
-            console.log("countMethod:", url);
-            this.countCopyMethod(Math.random());
-            return url;
+            console.log('countMethod:', url)
+            this.countCopyMethod(Math.random())
+            return url
         }
 
         // set get 存取器，相当于computed
